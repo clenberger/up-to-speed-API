@@ -45,7 +45,7 @@ router.post("/login", (req, res) => {
             });
             // set a cookie and redirect to root
             res.cookie("nToken", token, { maxAge: 900000, httpOnly: true });
-            res.json({'login:': 'great success', 'user-signed-in:': user})
+            res.json({'login:': 'success', 'user-signed-in:': user})
             });              
         }).catch(err => {
             console.log(err);
