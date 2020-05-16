@@ -27,11 +27,22 @@ router.post("/add/fact", (req, res) => {
 });
 
 // DELETE Fact
-router.delete("/delete/:fact", (req, res) => {
+router.delete("/delete", (req, res) => {
     Fact.findOneAndRemove({fact: req.params.fact}, (err, Fact) => {
         res.json({'delete:': 'fact removed', 'fact: ': req.params.fact})
     });
 })
 
+// UPDATE fact
+router.post("/update/fact", (req, res) => {
+    Fact.findOne({_id: req.body.id}).exec().then(function(fact) {
+        fact.text = req.body.text;
+        console.log(`updated fact: ${req.body.text}`)
+        res.json({'update: ': 'success', 'fact updated: ': fact})
+        return fact.save();
+    }).catch(function(err) {
+        console.log(err)
+    });
+})
 
 module.exports = router;

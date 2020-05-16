@@ -11,6 +11,7 @@
 ---
 
 # Endpoints
+# You will need to use Postman in order to make these API calls
 
 ---
 
